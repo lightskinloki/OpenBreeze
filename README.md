@@ -79,6 +79,7 @@ By making the machine larger (housed inside a quiet floor-standing bucket or sto
 
 ## Repository Structure
 
+- [`docs/SHOPPING_LIST.md`](docs/SHOPPING_LIST.md) — **Start here if building from scratch:** Complete shopping list with exact part specs, search terms, fastener sizes, and local vs. online sourcing.
 - [`docs/ENGINEERING_AND_FMEA.md`](docs/ENGINEERING_AND_FMEA.md) — Complete physics calculations, turbomachinery math, and V1 $\to$ V4 Adversarial Red-Team Failure Mode and Effects Analysis (FMEA).
 - [`docs/SAFETY_AND_TESTING_PROTOCOL.md`](docs/SAFETY_AND_TESTING_PROTOCOL.md) — Mandatory 4-rule life-safety architecture, awake testing checklist, and self-titration protocol.
 - [`reference/openpap/`](reference/openpap/) — Archived CAD (`openpap.scad`) and recovered firmware (`openpap.ino`) from Derek Anderson's [`keredson/OpenPAP`](https://github.com/keredson/OpenPAP) project, along with our engineering audit of what to reuse (ISO $22\text{ mm}$ hose spigot, integrated static pressure tap, filter slot) and what bugs to avoid.
