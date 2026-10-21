@@ -1,4 +1,4 @@
-# OpenBreeze 3D Print & Slicing Guide (Prototype 1)
+# OpenBreeze 3D Print & Slicing Guide (Prototype 1 - V4.1 Hardened)
 
 All parts are designed to be printed on any standard FDM 3D printer ($220\times 220\text{ mm}$ bed or larger) using **1.75mm PETG filament**.
 
@@ -30,7 +30,7 @@ All parts are designed to be printed on any standard FDM 3D printer ($220\times 
 * **Post-Processing**: Inspect blade tips for any stringing; use flush cutters to snip any stray hairs.
 
 ### Part 2: Impeller Snap-On Shroud Ring (`part2_impeller_shroud.stl`)
-* **Orientation**: Print flat on the build plate with the bevel side UP (flat groove side resting on the bed or vice versa).
+* **Orientation**: Print flat on the build plate with the flat groove side UP (bevel side resting on the bed).
 * **Supports**: **NONE**.
 * **Assembly**: Place a tiny dab of cyanoacrylate superglue (CA glue) onto the tip of each of the 16 blades on Part 1. Press Part 2 down firmly onto Part 1 until the 16 alignment tongues snap into the shroud grooves. Let cure for 15 minutes. You now have a rigid shrouded centrifugal wheel with 100% smooth internal passages!
 
@@ -40,9 +40,10 @@ All parts are designed to be printed on any standard FDM 3D printer ($220\times 
 * **Assembly**: Bolt the `775` 12V motor to the rear face using **2x `M4 x 10mm` screws and washers**. The front bearing boss of the motor nests directly into the $17.8\text{ mm}$ central counterbore.
 
 ### Part 4: Volute Front Cover (`part4_volute_frontcover.stl`)
-* **Orientation**: Print with the flat outer flange face resting on the build plate (scroll cavity facing UP).
-* **Supports**: Use **tree supports** only under the protruding tangential $22\text{ mm}$ outlet spigot.
-* **Assembly**: Lay a continuous $2\text{ mm}$ bead of neutral-cure silicone sealant (or hot glue) around the perimeter gasket groove of Part 3. Clamp Part 4 to Part 3 using **8x `M3 x 16mm` screws and nuts**.
+* **Dimensions**: $205 \times 205\text{ mm}$ outer plate with $15\text{ mm}$ rounded corners. Fits standard $220 \times 220\text{ mm}$ beds easily.
+* **Orientation**: Print with the parting plane resting flat on the build plate (scroll cavity facing UP, or flat front face on bed with tree supports).
+* **Supports**: Minimal tree supports under the tangential $22\text{ mm}$ outlet spigot.
+* **Assembly**: Lay a continuous $2\text{ mm}$ bead of neutral-cure silicone sealant (or silicone O-ring cord) in the perimeter gasket groove at $R = 99\text{ mm}$. Clamp Part 4 to Part 3 using **4x `M4 x 25mm` screws and nuts** through the reinforced corner bolt holes at $R = 123.7\text{ mm}$.
 
 ### Part 5: 32mm Silencer Perforated Core (`part5_silencer_perforated_core.stl`)
 * **Orientation**: Print standing vertically on one of its solid $18\text{ mm}$ end cuffs.
@@ -51,17 +52,19 @@ All parts are designed to be printed on any standard FDM 3D printer ($220\times 
 * **Assembly**: Wrap the central perforated section with 2 layers of breathable cotton cloth / old bath towel. Slide one end over the $22\text{ mm}$ outlet spigot of Part 4 using a $1\text{-}1/4\text{"}$ to $22\text{ mm}$ flexible coupler.
 
 ### Part 6: Prototype 1 Life-Safety Alarm Elbow (`part6_safety_alarm_elbow.stl`)
+* **Features**: Expanded $28\text{ mm}$ internal chamber, continuous $0.4\text{ mm}$ raised knife-edge seal (zero nibs), ring of 8x $2.0\text{ mm}$ forward-angled $\text{CO}_2$ vent holes ($25.1\text{ mm}^2$ un-blockable area), mask-end $3.2\text{ mm}$ pressure tap with tethered friction-fit cap.
 * **Orientation**: Print with the machine-side $22\text{ mm}$ male taper resting on the build plate.
-* **Supports**: Tree supports for the $90^\circ$ overhang and alarm dock.
+* **Supports**: Tree supports for the $90^\circ$ elbow overhang and alarm dock.
 * **Flapper Door Assembly**:
   1. Print the small flapper door flat on the bed.
-  2. Slide an unbent steel safety pin wire through the hinge lugs and the door barrel.
-  3. Form a small torsion loop in the safety pin wire so the spring gently holds the door **OPEN** (pointing outward) with $\sim 10\text{ gf}$ of opening torque.
+  2. Slide an unbent steel safety pin wire through the hinge lugs and the door barrel inside the chamber.
+  3. Form a small torsion loop in the safety pin wire so the spring gently holds the door **OPEN** (pointing outward) with $\sim 5\text{ gf}$ of opening bias ($1.25\text{ cmH}_2\text{O}$ cracking threshold).
   4. Glue the small magnet from the Dollar-Tree window alarm into the flapper door's magnet pocket.
-  5. Slide the main alarm sensor box into the dock bracket. When the blower runs ($\ge 3\text{ cmH}_2\text{O}$), positive pressure pushes the flapper door shut against the 3 point nibs, placing the magnet next to the alarm sensor (silent). If pressure drops below $2.5\text{ cmH}_2\text{O}$, the safety pin snaps the door open, triggering the $90\text{ dB}$ siren.
+  5. Slide the main alarm sensor box into the dock bracket. When the blower runs ($\ge 3\text{ cmH}_2\text{O}$), positive pressure pushes the flapper door shut against the continuous $0.4\text{ mm}$ knife edge, placing the magnet next to the alarm sensor (silent). If pressure drops below $1.5\text{ cmH}_2\text{O}$ (power cut, hose disconnect, blower stall), the safety pin snaps the door open, triggering the $90\text{ dB}$ siren and opening the $256\text{ mm}^2$ anti-asphyxia port to room air.
 
 ### Part 7: U-Tube Manometer Splash Traps & Bracket (`part7_manometer_splash_traps.stl`)
 * **Orientation**: Print bulbs vertically on their bottom hose barb; print the 25 cm scale bracket flat on its back.
+* **Bed Fit**: The $260\text{ mm}$ scale bracket fits easily when placed at a **$45^\circ$ diagonal** on a standard $220 \times 220\text{ mm}$ bed (diagonal is $311\text{ mm}$).
 * **Supports**: Tree supports under bulb overhangs.
 * **Assembly**: Connect one splash-trap bulb to the static pressure tap barb on Part 4 via $1/4\text{"}$ vinyl tubing. Fill the U-tube halfway with water (+ 1 drop of food coloring). Snap both legs into the printed centimeter bracket on the outside of the bucket.
 
@@ -73,5 +76,5 @@ Before bolting the impeller into the housing:
 1. Push the $5\text{ mm}$ metal flange shaft coupler (or $5\text{ mm}$ steel drill bit / rod) into the central hub.
 2. Rest the two ends of the steel shaft horizontally across the rims of **two identical drinking glasses** on a level table.
 3. Gently roll the wheel. The heavy side will roll to the bottom ($6\text{ o'clock}$).
-4. Take a short snippet of raw $1.75\text{ mm}$ PETG filament ($10\text{ mm} \approx 0.03\text{ g}$) and press it into one of the 24 perimeter balance holes at $12\text{ o'clock}$ (the light side).
+4. Take a short snippet of raw $1.75\text{ mm}$ PETG filament ($10\text{ mm} \approx 0.03\text{ g}$) and press it into one of the 24 perimeter balance holes on the **rear face** of the disk at $12\text{ o'clock}$ (the light side).
 5. Repeat until the wheel remains completely stationary in **any rotational position** (neutral equilibrium). Secure the filament snippet with a tiny drop of superglue.

@@ -83,8 +83,8 @@ By making the machine larger (housed inside a quiet floor-standing bucket or sto
 
 - [`cad/PRINT_AND_SLICING_GUIDE.md`](cad/PRINT_AND_SLICING_GUIDE.md) — Slicer profiles, print orientations, airtightness tips, and the 3-minute static balancing guide.
 - [`cad/scad/`](cad/scad/) — Parametric OpenSCAD source files for all 7 parts + full assembly preview.
-- [`cad/stl/`](cad/stl/) — Ready-to-slice binary STL files for all 7 components.
-- [`cad/scripts/generate_all_stl.py`](cad/scripts/generate_all_stl.py) — Headless Blender Python CAD generator and studio renderer.
+- [cad/stl/](cad/stl/) — Ready-to-slice STL files for all 7 components.
+- [	ests/validate_stls.py](tests/validate_stls.py) — Automated geometric bounding-box and 2-manifold verification test suite.
 - [`docs/SHOPPING_LIST.md`](docs/SHOPPING_LIST.md) — **Start here if building from scratch:** Complete shopping list with exact part specs, search terms, fastener sizes, and local vs. online sourcing.
 - [`docs/ENGINEERING_AND_FMEA.md`](docs/ENGINEERING_AND_FMEA.md) — Complete physics calculations, turbomachinery math, and V1 $\to$ V4 Adversarial Red-Team Failure Mode and Effects Analysis (FMEA).
 - [`docs/SAFETY_AND_TESTING_PROTOCOL.md`](docs/SAFETY_AND_TESTING_PROTOCOL.md) — Mandatory 4-rule life-safety architecture, awake testing checklist, and self-titration protocol.
@@ -98,7 +98,7 @@ By making the machine larger (housed inside a quiet floor-standing bucket or sto
 - [x] **Phase 1**: First-principles physics, thermodynamics, and fluid-mechanics modeling.
 - [x] **Phase 2**: Multi-round Adversarial Red-Team FMEA (V1 $\to$ V2 $\to$ V3 $\to$ V4 hardening).
 - [x] **Phase 3**: Audit & recovery of prior art (`keredson/OpenPAP` CAD and deleted firmware).
-- [x] **Phase 4**: Parametric OpenSCAD generation, Blender 5.2 Python CAD generator, and STL exports (`cad/`).
+- [x] **Phase 4**: Parametric OpenSCAD generation, automated geometric & manifold verification suite, and STL exports (cad/).
 - [ ] **Phase 5**: Prototype 1 bench testing (manometer static/dynamic pressure curve, acoustic dBA, 8-hour thermal run) and awake human validation.
 
 ---
