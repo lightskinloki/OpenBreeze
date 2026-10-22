@@ -24,7 +24,10 @@ def parse_ascii_stl(file_path):
             if parts[0] == "vertex" and len(parts) >= 4:
                 x, y, z = float(parts[1]), float(parts[2]), float(parts[3])
                 v = (round(x, 3), round(y, 3), round(z, 3))
-                current_triangle.append(v)
+                # Edges are paired by the exact vertex text: OpenSCAD writes a shared vertex
+                # identically in every triangle, while rounding would merge distinct
+                # sub-micron vertices and report false open edges.
+                current_triangle.append(tuple(parts[1:4]))
                 min_x = min(min_x, v[0])
                 max_x = max(max_x, v[0])
                 min_y = min(min_y, v[1])
@@ -76,6 +79,7 @@ def main():
         ("part5_silencer_perforated_core.stl", "Exhaust Muffler Core"),
         ("part6_safety_alarm_elbow.stl", "Life-Safety Elbow"),
         ("part7_manometer_splash_traps.stl", "Manometer Splash Traps"),
+        ("part8_intake_collar.stl", "Intake Collar"),
     ]:
         path = os.path.join(STL_DIR, filename)
         if not os.path.exists(path):

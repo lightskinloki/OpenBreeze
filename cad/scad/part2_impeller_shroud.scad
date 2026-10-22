@@ -1,31 +1,33 @@
-// OpenBreeze - Part 2: 165mm Impeller Snap-On Front Shroud Ring (V4.1 Hardened)
+// OpenBreeze - Part 2: 165mm Impeller Front Shroud Ring (V4.2)
 // License: GPL-3.0
-// Material: PETG (prints 100% flat on build plate with zero supports)
-// Mates 100% flat against the constant-height (10mm) blades of Part 1
+// Material: PETG. Modeled in its ASSEMBLED orientation:
+// grooves on the underside (they face the blades), eye lip on top (faces the cover).
+// Print exactly as modeled: groove face DOWN on the bed, lip UP. No supports.
+// Do not flip it before gluing; flipping would mirror the grooves.
 
 $fn = 100;
 
 // === PARAMETERS ===
 impeller_d = 165.0;            // Outer diameter (mm)
 impeller_r = impeller_d / 2;   // 82.5 mm
-eye_d = 60.0;                  // Intake eye diameter (mm)
-eye_r = eye_d / 2;             // 30.0 mm
-shroud_t = 1.8;                // Main flat shroud plate thickness (mm)
-labyrinth_lip_h = 2.0;         // Raised running labyrinth lip around eye (mm)
-labyrinth_lip_w = 1.6;         // Labyrinth lip wall thickness (mm)
+eye_r = 30.0;                  // Intake eye radius (mm)
+shroud_t = 1.8;                // Flat shroud plate thickness (mm)
+labyrinth_lip_h = 2.0;         // Running lip around the eye, faces the cover (mm)
+labyrinth_lip_w = 1.6;         // Lip wall thickness (mm)
 
 num_blades = 16;
-groove_w = 1.6;                // Mating groove width (accepts 1.2mm blade tongue)
+blade_sweep = -36.0;           // Must match Part 1
+groove_w = 1.6;                // Mating groove width (accepts the 1.2mm blade tongue)
 groove_depth = 1.0;            // Mating groove depth (mm)
 
-function blade_center(t) = 
+function blade_center(t) =
     let(
-        r = eye_r + (impeller_r - eye_r) * t,
-        theta = 36.0 * (1 - pow(max(0, 1 - t), 1.8))
+        r = eye_r + (impeller_d / 2 - eye_r) * t,
+        theta = blade_sweep * (1 - pow(max(0, 1 - t), 1.8))
     )
     [r * cos(theta), r * sin(theta)];
 
-function blade_polygon(thickness) = 
+function blade_polygon(thickness) =
     let(
         N = 20,
         spine = [for (i = [0:N]) blade_center(i / N)],
@@ -57,35 +59,34 @@ function blade_polygon(thickness) =
 module impeller_shroud() {
     difference() {
         union() {
-            // Main flat ring (Dead flat for 100% surface bonding across all 16 blades)
+            // Main flat ring (bears on all 16 blade tops)
             cylinder(r = impeller_r, h = shroud_t, $fn=120);
-            
-            // Raised Labyrinth Running Lip around intake eye (Front face)
-            // Provides 1.2mm radial running clearance with stationary cover lip
-            translate([0, 0, -labyrinth_lip_h])
+
+            // Raised running lip around the intake eye (top face)
+            translate([0, 0, shroud_t - 0.01])
                 difference() {
-                    cylinder(r = eye_r + labyrinth_lip_w, h = labyrinth_lip_h, $fn=100);
+                    cylinder(r = eye_r + labyrinth_lip_w, h = labyrinth_lip_h + 0.01, $fn=100);
                     translate([0, 0, -0.1])
-                        cylinder(r = eye_r, h = labyrinth_lip_h + 0.2, $fn=100);
+                        cylinder(r = eye_r, h = labyrinth_lip_h + 0.3, $fn=100);
                 }
         }
-        
+
         // Central intake eye cutout
-        translate([0, 0, -labyrinth_lip_h - 1])
+        translate([0, 0, -1])
             cylinder(r = eye_r, h = shroud_t + labyrinth_lip_h + 2, $fn=100);
-            
-        // 16 Mating grooves on the rear face (cuts 1.0mm into the 1.8mm plate)
-        translate([0, 0, shroud_t - groove_depth]) {
+
+        // 16 Mating grooves on the underside (cut 1.0mm into the 1.8mm plate)
+        translate([0, 0, -0.1]) {
             for (i = [0:num_blades-1]) {
                 rotate([0, 0, i * (360 / num_blades)])
                     linear_extrude(height = groove_depth + 0.1)
                         polygon(points = blade_polygon(groove_w));
             }
         }
-        
-        // Smooth aerodynamic entry chamfer
-        translate([0, 0, -labyrinth_lip_h - 0.1])
-            cylinder(r1 = eye_r + 1.2, r2 = eye_r, h = 1.2, $fn=100);
+
+        // Entry chamfer on the inside top edge of the lip
+        translate([0, 0, shroud_t + labyrinth_lip_h - 0.8])
+            cylinder(r1 = eye_r, r2 = eye_r + 0.8, h = 0.81, $fn=100);
     }
 }
 

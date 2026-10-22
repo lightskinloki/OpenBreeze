@@ -82,9 +82,9 @@ By making the machine larger (housed inside a quiet floor-standing bucket or sto
 ## Repository Structure
 
 - [`cad/PRINT_AND_SLICING_GUIDE.md`](cad/PRINT_AND_SLICING_GUIDE.md) — Slicer profiles, print orientations, airtightness tips, and the 3-minute static balancing guide.
-- [`cad/scad/`](cad/scad/) — Parametric OpenSCAD source files for all 7 parts + full assembly preview.
-- [cad/stl/](cad/stl/) — Ready-to-slice STL files for all 7 components.
-- [	ests/validate_stls.py](tests/validate_stls.py) — Automated geometric bounding-box and 2-manifold verification test suite.
+- [`cad/scad/`](cad/scad/) — Parametric OpenSCAD source files for all 8 parts + full assembly preview.
+- [`cad/stl/`](cad/stl/) — Ready-to-slice STL files for all 8 components, compiled from the OpenSCAD sources.
+- [`tests/validate_stls.py`](tests/validate_stls.py) — Automated geometric bounding-box and 2-manifold verification test suite.
 - [`docs/SHOPPING_LIST.md`](docs/SHOPPING_LIST.md) — **Start here if building from scratch:** Complete shopping list with exact part specs, search terms, fastener sizes, and local vs. online sourcing.
 - [`docs/ENGINEERING_AND_FMEA.md`](docs/ENGINEERING_AND_FMEA.md) — Complete physics calculations, turbomachinery math, and V1 $\to$ V4 Adversarial Red-Team Failure Mode and Effects Analysis (FMEA).
 - [`docs/SAFETY_AND_TESTING_PROTOCOL.md`](docs/SAFETY_AND_TESTING_PROTOCOL.md) — Mandatory 4-rule life-safety architecture, awake testing checklist, and self-titration protocol.
